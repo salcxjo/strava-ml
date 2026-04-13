@@ -31,7 +31,7 @@ python src/infer.py --file data/raw/activities/11147594123.fit.gz --verbose
 ```
 ─────────────────────────────────────────────
 File:      11147594123.fit.gz
-Duration:  2 min  |  Distance: 1.7 km
+Duration:  30 min  |  Distance: 5.1 km
 Pace:      5.91 min/km  (cv=0.40)
 HR mean:   137 bpm  Z4+Z5: 51%
 ─────────────────────────────────────────────
