@@ -137,9 +137,25 @@ Labels are generated from physiological heuristics (pace variability, HR zones,
 distance thresholds) calibrated to personal data distributions rather than
 generic thresholds.
 
-**ONNX portability.** The trained pipeline exports to a 200KB ONNX file that
+**ONNX portability.** The trained pipeline exports to a ~200KB ONNX file that
 runs with `onnxruntime` — no sklearn, no XGBoost, no Python ML stack required
 at inference time. Same pattern as TFLite deployment on embedded devices.
+
+---
+
+## Visualisations
+
+### Training load over time (CTL / ATL / TSB)
+![Training load](data/processed/training_load.png)
+
+### Feature importances
+![Feature importances](data/processed/feature_importances.png)
+
+### Label separability in feature space
+![Label space](data/processed/label_separability.png)
+
+### Cross-validation model comparison
+![Results](data/processed/final_results.png)
 
 ---
 
@@ -152,6 +168,27 @@ at inference time. Same pattern as TFLite deployment on embedded devices.
 | ONNX export + onnxruntime inference | TFLite / CoreML deployment on embedded devices |
 | Null handling for sensor dropout | Robust inference with missing sensor channels |
 | Temporal CV evaluation | Correct evaluation of deployed time-series models |
+
+---
+
+## What's next — `--history` mode
+
+Currently `infer.py` defaults ATL/CTL/TSB to zero when classifying a
+standalone file. The next step is a `--history` flag that reads your full
+`runs.csv`, computes real rolling training load up to the activity date, and
+feeds those values into the model — making classification context-aware.
+
+A run classified after a 100km training week should look different to the model
+than the same run after two weeks off. Right now it doesn't. This closes that
+gap and makes the CLI genuinely useful for ongoing personal use.
+
+```bash
+# Planned usage
+python src/infer.py \
+  --file data/raw/activities/11147594123.fit.gz \
+  --history data/processed/runs.csv \
+  --verbose
+```
 
 ---
 
