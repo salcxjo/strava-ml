@@ -146,16 +146,16 @@ at inference time. Same pattern as TFLite deployment on embedded devices.
 ## Visualisations
 
 ### Training load over time (CTL / ATL / TSB)
-![Training load](data/processed/training_load.png)
+![Training load](examples/training_load.png)
 
 ### Feature importances
-![Feature importances](data/processed/feature_importances.png)
+![Feature importances](examples/feature_importances.png)
 
 ### Label separability in feature space
-![Label space](data/processed/label_separability.png)
+![Label space](examples/label_separability.png)
 
 ### Cross-validation model comparison
-![Results](data/processed/final_results.png)
+![Results](examples/final_results.png)
 
 ---
 
